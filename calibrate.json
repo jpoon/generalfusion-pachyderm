@@ -1,0 +1,30 @@
+{
+  "pipeline": {
+    "name": "calibrate"
+  },
+  "transform": {
+    "cmd": [ 
+        "dotnet", 
+        "calibrate.dll", 
+        "/pfs/calibration", 
+        "/pfs/experiment", 
+        "/pfs/out"
+    ],
+    "image": "japoon.azurecr.io/generalfusion/calibrate:0.0.8",
+    "imagePullSecrets": ["acr-secret"]
+  },
+"inputs": [
+    {
+      "repo": {
+        "name": "experiment"
+      },
+      "glob": "/*"
+    },
+    {
+      "repo": {
+        "name": "calibration"
+      },
+      "glob": "/"
+    }
+  ]
+}

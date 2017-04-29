@@ -1,0 +1,17 @@
+{
+  "pipeline": {
+    "name": "average"
+  },
+  "transform": {
+    "cmd": [ "" ] ,
+    "image": ""
+  },
+"inputs": [
+    {
+      "repo": {
+        "name": "calibrate"
+      },
+      "glob": "/*/*"
+    }
+  ]
+}

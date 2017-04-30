@@ -1,18 +1,36 @@
-import cv2
-import numpy as np
-from matplotlib import pyplot as plt
-import os
- 
-# make_edges reads an image from /pfs/images and outputs the result of running
-# edge detection on that image to /pfs/out. Note that /pfs/images and
-# /pfs/out are special directories that Pachyderm injects into the container.
-def average(experimentDir):
-    img = cv2.imread(image)
-    tail = os.path.split(image)[1]
-    edges = cv2.Canny(img,100,200)
-    plt.imsave(os.path.join("/pfs/out", os.path.splitext(tail)[0]+'.png'), edges, cmap = 'gray')
+#!/usr/bin/env python
 
-# walk /pfs/images and call average on every file found
-for dirpath, dirs, files in os.walk("/pfs/calibrate"):
-    for file in files:
-        average(os.path.join(dirpath, file))
+import sys
+import os
+import numpy as np
+
+def average(experimentDir, outputFile):
+    for dirpath, _, filenames in os.walk(experimentDir):
+        sensorDataList = []
+
+        for filename in filenames:
+            filepath = os.path.join(dirpath, filename)
+            sensor = open(filepath).read().splitlines()
+            sensorDataList.append(sensor)
+
+        mean = np.array(sensorDataList).astype(float).mean(axis=0)
+        os.mkdir(os.path.dirname(outputFile))
+        np.savetxt(outputFile, mean, newline='\n') 
+
+def main(argv):
+    print "Args =", argv
+    if len(argv) != 2:
+        print "Expected 2 args; got", len(argv)
+        return 1
+
+    inputDir = argv[0]
+    outputDir = argv[1]
+
+    for dirpath, dirnames, _ in os.walk(inputDir):
+        for dirname in dirnames:
+            average(os.path.join(dirpath, dirname), os.path.join(outputDir, dirname))
+
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))

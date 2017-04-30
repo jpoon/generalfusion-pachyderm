@@ -1,22 +1,22 @@
 {
   "pipeline": {
-    "name": "calibrate"
+    "name": "scale"
   },
   "transform": {
     "cmd": [ 
         "dotnet", 
-        "calibrate.dll", 
+        "scale.dll", 
         "/pfs/calibration", 
-        "/pfs/experiment", 
+        "/pfs/raw", 
         "/pfs/out"
     ],
-    "image": "japoon.azurecr.io/generalfusion/calibrate:0.0.8",
+    "image": "japoon.azurecr.io/generalfusion/scale:0.0.4",
     "imagePullSecrets": ["acr-secret"]
   },
 "inputs": [
     {
       "repo": {
-        "name": "experiment"
+        "name": "raw"
       },
       "glob": "/*"
     },

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 
-namespace calibrate
+namespace scale
 {
     class Program
     {
@@ -19,11 +19,11 @@ namespace calibrate
 
             var calibrationDir = args[0];
             var experimentsDir = args[1];
-            var outputDir = args[2];
+            var outputRootDir = args[2];
 
             var calibrationFile = Directory.GetFiles(calibrationDir).First();
             var calibrations = File.ReadAllText(calibrationFile).Split(',');
-                
+
             foreach (var experimentDir in Directory.EnumerateDirectories(experimentsDir)) {
                 var sensorFiles = Directory.GetFiles(experimentDir).ToList();
                 for (var idx = 0; idx < sensorFiles.Count(); idx++) {
@@ -36,11 +36,12 @@ namespace calibrate
                     var data = File.ReadAllLines(sensorFilePath).Select(i => float.Parse(i) * calibration);
                     Console.WriteLine($"sensorFilePath={sensorFilePath}");
 
-                    // outpu
+                    // output
+                    var outputDir = Path.Combine(outputRootDir, Path.GetFileName(Path.GetDirectoryName(sensorFilePath)));
                     var outputFile = Path.Combine(outputDir, Path.GetFileNameWithoutExtension(sensorFilePath));
                     Directory.CreateDirectory(outputDir);
                     File.WriteAllText(outputFile, string.Join(Environment.NewLine, data));
-                    Console.WriteLine($"outputDir={outputFile}");
+                    Console.WriteLine($"outputFiler={outputFile}");
                 }
             }
         }

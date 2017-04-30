@@ -9,7 +9,7 @@
 "inputs": [
     {
       "repo": {
-        "name": "calibrate"
+        "name": "scale"
       },
       "glob": "/*/*"
     }

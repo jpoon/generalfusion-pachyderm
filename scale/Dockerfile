@@ -1,7 +1,6 @@
-FROM microsoft/dotnet:1.1-sdk-msbuild
+FROM microsoft/dotnet:1.1.1-runtime
 
 WORKDIR /app
-ADD . /app
+COPY out .
 
-RUN dotnet restore \
-    && dotnet publish -c Release -o .
+ENTRYPOINT ["dotnet", "scale.dll"]

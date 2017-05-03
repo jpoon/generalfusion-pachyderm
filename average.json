@@ -3,10 +3,18 @@
     "name": "average"
   },
   "transform": {
-    "cmd": [ "" ] ,
-    "image": ""
+    "cmd": [
+      "python",
+      "average.py",
+      "/pfs/scale",
+      "/pfs/out"
+    ],
+    "image": "japoon.azurecr.io/generalfusion/average:0.0.6",
+    "imagePullSecrets": [
+      "acr-secret"
+    ]
   },
-"inputs": [
+  "inputs": [
     {
       "repo": {
         "name": "scale"

@@ -3,17 +3,19 @@
     "name": "scale"
   },
   "transform": {
-    "cmd": [ 
-        "dotnet", 
-        "scale.dll", 
-        "/pfs/calibration", 
-        "/pfs/raw", 
-        "/pfs/out"
+    "cmd": [
+      "dotnet",
+      "scale.dll",
+      "/pfs/calibration",
+      "/pfs/raw",
+      "/pfs/out"
     ],
-    "image": "japoon.azurecr.io/generalfusion/scale:0.0.4",
-    "imagePullSecrets": ["acr-secret"]
+    "image": "japoon.azurecr.io/generalfusion/scale:0.0.5",
+    "imagePullSecrets": [
+      "acr-secret"
+    ]
   },
-"inputs": [
+  "inputs": [
     {
       "repo": {
         "name": "raw"

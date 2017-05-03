@@ -1,11 +1,8 @@
 #!/bin/bash
 
-name="scale"
+name="average"
 version=`cat VERSION`
 echo "version: $version"
-
-dotnet restore
-dotnet publish -c Release -o out
 
 docker build . -t $name 
 docker tag $name japoon.azurecr.io/generalfusion/$name:$version

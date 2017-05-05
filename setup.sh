@@ -13,7 +13,3 @@ pachctl put-file calibration master -c -f calibration.csv
 cd experiment
 pachctl create-repo raw
 pachctl put-file -r raw master -c -f 1
-
-# scale pipeline
-#cd ../..
-#pachctl create-pipeline -f scale.json

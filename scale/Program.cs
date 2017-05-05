@@ -33,8 +33,10 @@ namespace scale
 
                     // sensor
                     var sensorFilePath = sensorFiles[idx];
-                    var data = File.ReadAllLines(sensorFilePath).Select(i => float.Parse(i) * calibration);
                     Console.WriteLine($"sensorFilePath={sensorFilePath}");
+
+                    // calibration*sensor
+                    var data = File.ReadAllLines(sensorFilePath).Select(i => float.Parse(i) * calibration);
 
                     // output
                     var outputDir = Path.Combine(outputRootDir, Path.GetFileName(Path.GetDirectoryName(sensorFilePath)));

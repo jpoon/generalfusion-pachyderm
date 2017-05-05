@@ -15,5 +15,5 @@ pachctl create-repo raw
 pachctl put-file -r raw master -c -f 1
 
 # scale pipeline
-cd ../..
-pachctl create-pipeline -f scale.json
+#cd ../..
+#pachctl create-pipeline -f scale.json

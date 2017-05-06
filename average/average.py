@@ -19,6 +19,7 @@ def average(experimentDir, outputFile):
 
         mean = np.array(sensorDataList).astype(float).mean(axis=0)
         np.savetxt(outputFile, mean, newline='\n')
+        print "Saving average =", outputFile
 
 def main(argv):
     """

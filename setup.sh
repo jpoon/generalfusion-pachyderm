@@ -7,7 +7,7 @@ cd data
 
 # calibration
 pachctl create-repo calibration
-pachctl put-file calibration master -c -f calibration.csv
+echo "1,1,1" | pachctl put-file calibration master -c calibration.csv
 
 # data
 cd experiment

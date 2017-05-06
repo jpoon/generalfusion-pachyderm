@@ -6,6 +6,8 @@ pachctl list-repo
 
 pachctl list-file raw master 1
 
+pachctl get-file raw master 1/sensor1.csv
+
 # show graph
 
 pachctl get-file calibration master calibration.csv
@@ -30,4 +32,6 @@ pachctl start-commit calibration master
 pachctl delete-file calibration master calibration.csv
 echo "0.8,1,1.1" | pachctl put-file calibration master calibration.csv
 pachctl finish-commit calibration master
+
+
 

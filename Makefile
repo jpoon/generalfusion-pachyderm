@@ -1,5 +1,5 @@
-AVERAGE_VERSION = 0.0.5
-SCALE_VERSION = 0.0.5
+AVERAGE_VERSION = 0.0.10
+SCALE_VERSION = 0.0.7
 REPO = japoon.azurecr.io/generalfusion
 
 .PHONY: all build tag push 

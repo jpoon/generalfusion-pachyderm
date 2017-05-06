@@ -9,7 +9,7 @@
       "/pfs/scale",
       "/pfs/out"
     ],
-    "image": "japoon.azurecr.io/generalfusion/average:0.0.6",
+    "image": "japoon.azurecr.io/generalfusion/average:0.0.10",
     "imagePullSecrets": [
       "acr-secret"
     ]

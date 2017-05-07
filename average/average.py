@@ -29,7 +29,7 @@ def average(experimentDir, outputFile):
         np.savetxt(outputFile, mean, newline='\n')
         print "Saving average =", outputFile
 
-        plt.plot(mean, label="Average")
+        plt.plot(mean, label="average")
 
         plt.legend()
         plt.title("Average")

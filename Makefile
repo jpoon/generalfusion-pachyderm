@@ -1,10 +1,10 @@
-AVERAGE_VERSION = 0.0.10
-SCALE_VERSION = 0.0.7
+AVERAGE_VERSION = 0.1.0
+SCALE_VERSION = 0.1.0
 REPO = japoon.azurecr.io/generalfusion
 
 .PHONY: all build tag push 
 
-all: build
+all: build tag push
 
 build:
 	dotnet restore scale/
@@ -23,4 +23,3 @@ push:
 	docker push $(REPO)/average:latest
 	docker push $(REPO)/scale:$(SCALE_VERSION)
 	docker push $(REPO)/scale:latest
-

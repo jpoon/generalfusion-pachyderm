@@ -9,17 +9,15 @@
       "/pfs/scale",
       "/pfs/out"
     ],
-    "image": "japoon.azurecr.io/generalfusion/average:0.0.10",
+    "image": "japoon.azurecr.io/generalfusion/average:0.1.0",
     "imagePullSecrets": [
       "acr-secret"
     ]
   },
-  "inputs": [
-    {
-      "repo": {
-        "name": "scale"
-      },
+  "input": {
+    "atom": {
+      "repo": "scale",
       "glob": "/*"
     }
-  ]
+  }
 }

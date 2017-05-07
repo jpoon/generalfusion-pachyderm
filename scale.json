@@ -10,23 +10,25 @@
       "/pfs/raw",
       "/pfs/out"
     ],
-    "image": "japoon.azurecr.io/generalfusion/scale:0.0.7",
+    "image": "japoon.azurecr.io/generalfusion/scale:0.1.0",
     "imagePullSecrets": [
       "acr-secret"
     ]
   },
-  "inputs": [
-    {
-      "repo": {
-        "name": "raw"
+  "input": {
+    "cross": [
+      {
+        "atom": {
+          "repo": "raw",
+          "glob": "/*"
+        }
       },
-      "glob": "/*"
-    },
-    {
-      "repo": {
-        "name": "calibration"
-      },
-      "glob": "/"
-    }
-  ]
+      {
+        "atom": {
+          "repo": "calibration",
+          "glob": "/"
+        }
+      }
+    ]
+  }
 }

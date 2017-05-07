@@ -27,20 +27,20 @@ namespace scale
             foreach (var experimentDir in Directory.EnumerateDirectories(experimentsDir)) {
                 var sensorFiles = Directory.GetFiles(experimentDir).ToList();
                 for (var idx = 0; idx < sensorFiles.Count(); idx++) {
-                    // calibration
+                    // read calibration
                     var calibration = float.Parse(calibrations[idx]);
                     Console.WriteLine($"calibration={calibration}");
 
-                    // sensor
+                    // read sensor
                     var sensorFilePath = sensorFiles[idx];
                     Console.WriteLine($"sensorFilePath={sensorFilePath}");
 
                     // calibration*sensor
                     var data = File.ReadAllLines(sensorFilePath).Select(i => float.Parse(i) * calibration);
 
-                    // output
+                    // output to file
                     var outputDir = Path.Combine(outputRootDir, Path.GetFileName(Path.GetDirectoryName(sensorFilePath)));
-                    var outputFile = Path.Combine(outputDir, Path.GetFileNameWithoutExtension(sensorFilePath));
+                    var outputFile = Path.Combine(outputDir, Path.GetFileNameWithoutExtension(sensorFilePath) + "-scaled");
                     Directory.CreateDirectory(outputDir);
                     File.WriteAllText(outputFile, string.Join(Environment.NewLine, data));
                     Console.WriteLine($"outputFiler={outputFile}");

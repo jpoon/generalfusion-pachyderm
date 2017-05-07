@@ -1,4 +1,5 @@
 FROM python:2.7.13-alpine
+MAINTAINER docker@jasonpoon.ca
 
 WORKDIR /app
 

@@ -30,7 +30,6 @@ def average(experimentDir, outputFile):
         print "Saving average =", outputFile
 
         plt.plot(mean, label="average")
-
         plt.legend()
         plt.title("Average")
         plt.savefig(outputFile + ".png")

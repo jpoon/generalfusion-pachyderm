@@ -10,8 +10,8 @@ kubectl get all
 pachctl list-repo
 
 # Input: Raw Sensor
-pachctl list-file raw master 1
-pachctl get-file raw master 1/sensor1.csv | less
+pachctl list-file raw master injector1
+pachctl get-file raw master injector1/sensor1.csv | less
 open data/graph/1-raw.png
 
 # Input: Sensor Calibration
@@ -26,8 +26,8 @@ pachctl list-file scale master 1
 pachctl create-pipeline -f average.json
 pachctl list-repo
 pachctl list-file average master
-pachctl get-file average master 1.png > 1-average.png
-open 1-average.png
+pachctl get-file average master injector1.png > injector1-average.png
+open injector1-average.png
 
 # Input: NEW Sensor Calibration
 pachctl start-commit calibration master
@@ -36,5 +36,5 @@ echo "0.8,1,1.1" | pachctl put-file calibration master calibration.csv
 pachctl finish-commit calibration master
 
 pachctl list-commit average
-pachctl get-file average master 1.png > 1-new-average.png
-open 1-new-average.png
+pachctl get-file average master injector1.png > injector1-new-average.png
+open injector1-new-average.png

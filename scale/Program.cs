@@ -10,7 +10,6 @@ namespace scale
         static void Main(string[] args)
         {
             args.ToList().ForEach(a => { Console.WriteLine($"arg={a}"); });
-
             if (args.Length != 3)
             {
                 Console.WriteLine($"Expected 3 arguments; got {args.Length}");
@@ -21,22 +20,22 @@ namespace scale
             var experimentsDir = args[1];
             var outputRootDir = args[2];
 
-            var calibrationFile = Directory.GetFiles(calibrationDir).First();
-            var calibrations = File.ReadAllText(calibrationFile).Split(',');
+            var calibrationFilePath = Directory.GetFiles(calibrationDir).First();
+            var calibrations = File.ReadAllText(calibrationFilePath).Split(',');
 
             foreach (var experimentDir in Directory.EnumerateDirectories(experimentsDir)) {
-                var sensorFiles = Directory.GetFiles(experimentDir).ToList();
-                for (var idx = 0; idx < sensorFiles.Count(); idx++) {
+                var sensorFilePaths = Directory.GetFiles(experimentDir);
+                for (var i = 0; i < sensorFilePaths.Count(); i++) {
                     // read calibration
-                    var calibration = float.Parse(calibrations[idx]);
+                    var calibration = float.Parse(calibrations[i]);
                     Console.WriteLine($"calibration={calibration}");
 
                     // read sensor
-                    var sensorFilePath = sensorFiles[idx];
+                    var sensorFilePath = sensorFilePaths[i];
                     Console.WriteLine($"sensorFilePath={sensorFilePath}");
 
                     // calibration*sensor
-                    var data = File.ReadAllLines(sensorFilePath).Select(i => float.Parse(i) * calibration);
+                    var data = File.ReadAllLines(sensorFilePath).Select(r => float.Parse(r) * calibration);
 
                     // output to file
                     var outputDir = Path.Combine(outputRootDir, Path.GetFileName(Path.GetDirectoryName(sensorFilePath)));

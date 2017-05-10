@@ -20,7 +20,7 @@ pachctl get-file calibration master calibration.csv
 # Pipeline: Scale
 pachctl create-pipeline -f scale.json
 pachctl list-repo
-pachctl list-file scale master 1
+pachctl list-file scale master injector1
 
 # Pipeline: Average
 pachctl create-pipeline -f average.json

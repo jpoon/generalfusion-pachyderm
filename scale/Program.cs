@@ -10,11 +10,6 @@ namespace scale
         static void Main(string[] args)
         {
             args.ToList().ForEach(a => { Console.WriteLine($"arg={a}"); });
-            if (args.Length != 3)
-            {
-                Console.WriteLine($"Expected 3 arguments; got {args.Length}");
-                return;
-            }
 
             var calibrationDir = args[0];
             var experimentsDir = args[1];

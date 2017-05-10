@@ -5,7 +5,7 @@
 #doitlive prompt: damoekri
 
 kubectl get node
-kubectl get all
+kubectl get deployments
 
 pachctl list-repo
 

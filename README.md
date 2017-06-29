@@ -1,6 +1,6 @@
 # Unlocking Fusion with Containers and Kubernetes
 
-Demo application that was demonstrated at Build 2017 during the "Unlocking Fusion with Containers and Kubernetes" session.
+Demo application that was demonstrated at Build 2017 during the "Unlocking Fusion with Containers and Kubernetes" session. Channel 9 video is available [here](https://channel9.msdn.com/Events/Build/2017/T6983).
 
 ## Architecture
 
